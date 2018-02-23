@@ -14,7 +14,16 @@
   <script type="text/javascript" src="cordova.js"></script>
   
   <script type="text/javascript" src="http://cdn.jtsage.com/windows/latest/jqm-windows.alertbox.js"></script>
-
+	
+	<script>
+		 $(document).on("pagecontainerload",function(event,data) {
+			alert("The page has been loaded: " + data.url);
+		 });
+		 $(document).on("pagecontainerloadfailed",function(event,data) {
+			alert("Sorry, the page has been failed to load!!!");
+		 });
+	</script>
+	
 </head>
 
 <!-- CORPO -->

@@ -28,7 +28,8 @@ $(document).ready(function() {
 					
 					//redireciona o usuario para pagina
 					$.mobile.changePage("#index", {
-						transition : "slidefade"
+						transition : "slidefade",
+						reloadPage:true
 					});
 
 				}else{
