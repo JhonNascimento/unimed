@@ -115,20 +115,18 @@
 <div id="pagina-index" data-role="page">
 	
 	<div data-role="header" data-theme="b">
-      <a href="#pagina-index" data-iconpos="notext" data-role="button" data-icon="home" data-transition="slidefade"></a>
-      <h1>Unimed</h1>
-	  <a href="#pagina-login" data-iconpos="notext" data-role="button" data-icon="action" data-transition="slidefade"></a>
-	  
-	  <div style='text-align:center;' class='nomcliente'></div>
-    </div>
-		
-	<div data-role="navbar">
-	    <ul>
-	        <li><a href="#pagina-2viaboleto" data-transition="slidefade" class="ui-btn-active" data-theme="d">2 Via Boleto</a></li>
-	        <li><a href="#pagina-guiamedico" data-transition="slidefade" class="ui-btn-active" data-theme="d">Guia Médico</a></li>
-	    </ul>
+		<a href="#pagina-index" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-left" data-role="button" role="button">Início</a>
+		<a href="#pagina-login" class="ui-btn-right ui-btn ui-icon-arrow-u ui-btn-icon-left" data-role="button" role="button">Sair</a>
+		<h1 id="section" class="ui-title" role="heading" aria-level="1">Unimed</h1>
 	</div>
-		
+	
+	<div style='text-align:center;' class='nomcliente'></div>
+    
+	<ul data-role="listview" data-theme="d">
+	    <li><a href="#pagina-2viaboleto">2 Via Boleto</a></li>
+	    <li><a href="#pagina-guiamedico">Guia Médico</a></li>
+	</ul>
+
 </div>
 
 
@@ -136,13 +134,19 @@
 <div id="pagina-2viaboleto" data-role="page">
 
 	<div data-role="header" data-theme="b">
-      <a href="#pagina-index" data-iconpos="notext" data-role="button" data-icon="home" data-transition="slidefade" title="Home"></a>
-      <h1>2 Via Boleto</h1>
-	  <a href="#pagina-login" data-iconpos="notext" data-role="button" data-icon="action" data-transition="slidefade"></a>
-    </div>
+		<a href="#pagina-index" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-left" data-role="button" role="button">Início</a>
+		<a href="#pagina-login" class="ui-btn-right ui-btn ui-icon-arrow-u ui-btn-icon-left" data-role="button" role="button">Sair</a>
+		<h1 id="section" class="ui-title" role="heading" aria-level="1">2 Via Boleto</h1>
+	</div>
 	
-	<label for="text-basic">CPF:</label>
-	<input type="text" name="text-basic" id="text-basic" value="">
+	<ul data-role="listview" data-theme="a">
+	    <li><a href="#" id='link-meus-boletos'>Ver Meus Boletos</a></li>
+	</ul>
+	
+	<hr />
+	<div role="main" class="ui-content" id="table-2via-boleto">
+	
+	</div>
 	
 </div>
 

@@ -26,6 +26,7 @@ $(document).ready(function() {
 					//set cookie
 				    $.cookie('carteirinha', json.dados.carteirinha); 
 				    $.cookie('clientenome', json.dados.nome); 
+				    $.cookie('clientecpf',  json.dados.cpf); 
 					
 					//mostra o nome do usuario logado em uma div
 					$( ".nomcliente" ).html($.cookie('clientenome'));
@@ -127,6 +128,66 @@ $(document).ready(function() {
 	});
 	
 	
+	/*2 VIA BOLETO*/
+	$("#link-meus-boletos").on("click", function(e) {
+		
+		e.preventDefault();
+		
+		$.ajax({
+			type: "POST",
+			url: "http://clientes.unimedmanaus.com.br/controller/app/proc2viaBoleto.php", 
+			data: {
+				acao: 'Cadastrese',
+				cpf: $.cookie('clientecpf')
+			},            
+			async: true,
+			dataType: "json", 
+			beforeSend: function() {
+               $.mobile.loading( "show" );
+			},
+			success: function (json) {
+				
+				if(json.msg){
+					$.alert({ title: 'Alerta!', content: json.msg, });
+				}
+				
+				var data="";
+				
+				$.each(json, function () {
+					
+					data += '<table data-role="table" class="ui-responsive table-stroke">';
+					data += "<thead><tr><th>Período:</th><th>Data Vencimento:</th><th>Dias em Aberto:</th><th>Nosso Número:</th><th>Boleto:</th></tr></thead>";
+					data += "<tbody>";
+				
+					data += "<tr>";
+					
+					data += "<td>"+ this.datvencimento +"</td>";
+					data += "<td>"+ this.diasemaberto +"</td>";
+					data += "<td>"+ this.nossonumero +"</td>";
+					data += "<td>"+ this.periodo +"</td>";
+					data += "<td>"+ this.gerarboleto +"</td>";
+					
+					data += "</tr>";
+					
+					data += "</tbody>";
+					data += "</table>";
+					
+					data += "<hr>";
+				});
+				
+				$("#table-2via-boleto").html(data).enhanceWithin();
+				
+			},
+			complete: function(){
+				$.mobile.loading( "hide" );
+			},
+			error: function(xhr,e,t){
+				console.log(xhr.responseText);                
+			}
+		});
+	});
+	
+	
 });
 
 
@@ -159,6 +220,7 @@ function validaLogin(){
 		},
 		complete: function(){
 			$.mobile.loading( "hide" );
+			return false;
 		},
 		error: function(xhr,e,t){
 			console.log(xhr.responseText);                
@@ -166,29 +228,3 @@ function validaLogin(){
 	});
 	
 }
-
-function showPopup(msg) {
-    // close button
-    var closeBtn = $('<a href="#" data-rel="back" data-role="button" data-theme="d" data-icon="flat-delete" data-iconpos="notext" class="ui-btn-right">X</a>').button();
-    var content = "<p>" + msg + "</p>";
-    var popup = $("<div/>", {
-        "data-role": "popup"
-    }).css({
-        "width": $(window).width() / 1.3 + "px" // optional
-    }).append(closeBtn).append(content);
-    $(".ui-page-active").append(popup);
-    $("[data-role=popup]").on("popupafterclose", function () {
-        $(this).remove();
-    }).on("popupafteropen", function () {
-        $(this).popup("reposition", {
-            "positionTo": "window",
-        });
-    }).popup().popup("open");
-}
-
-
-
-
-
-
-
