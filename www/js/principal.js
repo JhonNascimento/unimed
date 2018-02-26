@@ -19,6 +19,8 @@ $(document).ready(function() {
 			},
 			success: function (json) {
 				
+				$.alert({ title: 'Alerta!', content: json.msg, });
+				
 				if(json.result == true){
 					
 					//set cookie
@@ -33,8 +35,6 @@ $(document).ready(function() {
 						transition : "slidefade"
 					});
 
-				}else{
-					showPopup(json.msg);
 				}
 			},
 			complete: function(){
@@ -66,6 +66,8 @@ $(document).ready(function() {
 			},
 			success: function (json) {
 				
+				$.alert({ title: 'Alerta!', content: json.msg, });
+				
 				if(json.result == true){
 					
 					//redireciona o usuario para pagina
@@ -73,10 +75,7 @@ $(document).ready(function() {
 						transition : "slidefade"
 					});
 
-				}else{
-					showPopup(json.msg);
 				}
-				
 			},
 			complete: function(){
 				$.mobile.loading( "hide" );
@@ -107,6 +106,8 @@ $(document).ready(function() {
 			},
 			success: function (json) {
 				
+				$.alert({ title: 'Alerta!', content: json.msg, });
+				
 				if(json.result == true){
 					
 					//redireciona o usuario para pagina
@@ -114,8 +115,6 @@ $(document).ready(function() {
 						transition : "slidefade"
 					});
 
-				}else{
-					showPopup(json.msg);
 				}
 			},
 			complete: function(){
