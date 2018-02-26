@@ -29,7 +29,7 @@ $(document).ready(function() {
 					$( ".nomcliente" ).html($.cookie('clientenome'));
 					
 					//redireciona o usuario para pagina
-					$.mobile.changePage("#index", {
+					$.mobile.changePage("#pagina-index", {
 						transition : "slidefade"
 					});
 
@@ -66,16 +66,17 @@ $(document).ready(function() {
 			},
 			success: function (json) {
 				
-				showPopup(json.msg);
-				
 				if(json.result == true){
 					
 					//redireciona o usuario para pagina
-					$.mobile.changePage("#login", {
+					$.mobile.changePage("#pagina-login", {
 						transition : "slidefade"
 					});
 
+				}else{
+					showPopup(json.msg);
 				}
+				
 			},
 			complete: function(){
 				$.mobile.loading( "hide" );
@@ -106,15 +107,15 @@ $(document).ready(function() {
 			},
 			success: function (json) {
 				
-				showPopup(json.msg);
-				
 				if(json.result == true){
 					
 					//redireciona o usuario para pagina
-					$.mobile.changePage("#login", {
+					$.mobile.changePage("#pagina-login", {
 						transition : "slidefade"
 					});
 
+				}else{
+					showPopup(json.msg);
 				}
 			},
 			complete: function(){
@@ -125,7 +126,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
 	
 	
 });
@@ -151,7 +151,7 @@ function validaLogin(){
 			if(!json.status){
 				
 				//redireciona o usuario para pagina
-				$.mobile.changePage("#login", {
+				$.mobile.changePage("#pagina-login", {
 					transition : "slidefade"
 				});
 				
