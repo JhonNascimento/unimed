@@ -5,25 +5,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  
   <script src="js/jquery.js"></script>
+  
   <script src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  
   <script src="js/index.js"></script>
   <script src="js/principal.js"></script>
+  
   <script src="js/cookie.js"></script>
+  
   <script type="text/javascript" src="cordova.js"></script>
   
-  <script type="text/javascript" src="http://cdn.jtsage.com/windows/latest/jqm-windows.alertbox.js"></script>
-	
-	<script>
-		 $(document).on("pagecontainerload",function(event,data) {
-			alert("The page has been loaded: " + data.url);
-		 });
-		 $(document).on("pagecontainerloadfailed",function(event,data) {
-			alert("Sorry, the page has been failed to load!!!");
-		 });
-	</script>
-	
 </head>
 
 <!-- CORPO -->
@@ -31,64 +25,124 @@
 
 
 <!-- PAGINA LOGIN -->
-<div id="login" data-role="page"> 
+<div id="pagina-login" data-role="page"> 
 	
 	<div data-role="header" data-theme="b">
       <h1>Unimed</h1>
     </div>
 	
-    <div align="center"> <strong>Tela de Login 3</strong></div>
+    <div align="center"> <strong>Login</strong></div>
     
-    <form id="formLogin">
-      <label>Usuario</label>
-      <input id="usuario" name="usuario" required type="text" placeholder="meu usuario" />
+    <form id="formLogin" method="post" method="post">
+	
+      <label>Carteirinha:</label>
+      <input name="carteirinha" required type="text"/>
  
       <label>Senha</label>
-      <input id="senha" name="senha" type="password" placeholder="minha senha" />
+      <input name="senha" required type="password"/>
 		
       <button type="submit" data-theme="b">Acessar</button>
 	  
     </form>  
 	
-	<div data-role="popup" id="popup">
-		<p id="popup-dialogo"></p>
-	</div>
+	<p><a data-transition="slidefade" href="#pagina-esquecisenha">Esqueci Senha</a></p>
+	<p><a data-transition="slidefade" href="#pagina-cadastrese">Cadastre-se</a></p>
 	
-	<div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span><h1>loading</h1></div>
+</div>
+ 
+<!-- ESQUECI SENHA -->
+<div id="pagina-esquecisenha" data-role="page">
+
+	<div data-role="header" data-theme="b">
+      <h1>Esqueci Senha</h1>
+	  <a href="#pagina-login" data-iconpos="notext" data-role="button" data-icon="action" data-transition="slidefade"></a>
+    </div>
+
+	<form id="formEsqueciSenha" method="post">
 	
+		<label>Carteirinha:</label>
+		<input required type="number" name="carteirinha" id="carteirinha">
+		
+		<label>Data Nascimento:</label>
+		<input required type="date" name="datnascimento" id="datnascimento">
+		
+		<label>Email Ou Celular Cadastrado:</label>
+		<input required type="text" name="emailcelular" id="emailcelular">
+		
+		<button type="submit" data-theme="b">Enviar Dados</button>
+		
+	</form>
+</div>
+
+<!-- CADASTRE-SE -->
+<div id="pagina-cadastrese" data-role="page">
+
+	<div data-role="header" data-theme="b">
+      <h1>Cadastre-se</h1>
+	  <a href="#pagina-login" data-iconpos="notext" data-role="button" data-icon="action" data-transition="slidefade"></a>
+    </div>
+
+	<form id="formCadastrese" method="post">
+	
+		<label>Carteirinha:</label>
+		<input required type="number" name="carteirinha">
+		
+		<label>Data Nascimento:</label>
+		<input required type="date" name="datnascimento">
+		
+		<label>Celular:</label>
+		<input required type="text" name="celular">
+		
+		<label>Email:</label>
+		<input required type="text" name="email">
+		
+		<label>Senha:</label>
+		<input required type="password" name="senha">
+		
+		<label>Repetir Senha:</label>
+		<input required type="password" name="senha2">
+		
+		<button type="submit" data-theme="b">Cadastrar</button>
+		
+	</form>
 </div>
  
 
 <!-- PAGINA INICIO -->
-<div id="index" data-role="page">
+<div id="pagina-index" data-role="page">
 	
 	<div data-role="header" data-theme="b">
-      <a href="#index" data-iconpos="notext" data-role="button" data-icon="home" data-transition="flow" title="Home">Home</a>
+      <a href="#pagina-index" data-iconpos="notext" data-role="button" data-icon="home" data-transition="slidefade"></a>
       <h1>Unimed</h1>
+	  <a href="#pagina-login" data-iconpos="notext" data-role="button" data-icon="action" data-transition="slidefade"></a>
+	  
+	  <div style='text-align:center;' class='nomcliente'></div>
     </div>
-   
-	Bem vindo <span id="usuario_nome"></span> conectou com sucesso!
 		
-		<div data-role="navbar">
-		    <ul>
-		        <li><a href="#2viaboleto" data-transition="flow" class="ui-btn-active" data-theme="d">2 Via Boleto</a></li>
-		    </ul>
-		</div><!-- /navbar -->
+	<div data-role="navbar">
+	    <ul>
+	        <li><a href="#pagina-2viaboleto" data-transition="slidefade" class="ui-btn-active" data-theme="d">2 Via Boleto</a></li>
+	        <li><a href="#pagina-guiamedico" data-transition="slidefade" class="ui-btn-active" data-theme="d">Guia Médico</a></li>
+	    </ul>
+	</div>
 		
 </div>
 
 
-<!-- PAGINA  -->
-<div id="2viaboleto" data-role="page">
+<!-- PAGINA 2 VIA BOLETO -->
+<div id="pagina-2viaboleto" data-role="page">
+
 	<div data-role="header" data-theme="b">
-      <a href="#index" data-iconpos="notext" data-role="button" data-icon="home" data-transition="flow" title="Home">Home</a>
+      <a href="#pagina-index" data-iconpos="notext" data-role="button" data-icon="home" data-transition="slidefade" title="Home"></a>
       <h1>2 Via Boleto</h1>
+	  <a href="#pagina-login" data-iconpos="notext" data-role="button" data-icon="action" data-transition="slidefade"></a>
     </div>
 	
 	<label for="text-basic">CPF:</label>
 	<input type="text" name="text-basic" id="text-basic" value="">
 	
 </div>
+
 
 <!--
 <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
