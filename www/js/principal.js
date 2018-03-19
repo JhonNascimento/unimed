@@ -166,6 +166,7 @@ $(document).ready(function() {
 					data += "<td>"+ this.nossonumero +"</td>";
 					data += "<td>"+ this.periodo +"</td>";
 					data += "<td>"+ this.gerarboleto +"</td>";
+					data += "<td><a id='teste' target='_blank' href='https://www.google.com.br'>teste</a></td>";
 					
 					data += "</tr>";
 					
@@ -187,6 +188,9 @@ $(document).ready(function() {
 		});
 	});
 	
+	$("#teste").on("click", function(e) {
+		alert("teste");
+	});
 	
 });
 
